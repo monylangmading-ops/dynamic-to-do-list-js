@@ -1,18 +1,13 @@
-document.addEventListener('DOMContentLoaded', ()=>{
-const addButton = document.getElementById('Add Task');
-const taskinput = document.getElementById('task-input');
-const tasklist = document.getElementById('task-list');
+document.addEventListener('DOMContentLoaded', () => {
+  const addButton = document.getElementById('add-task-btn');
+  const taskInput = document.getElementById('task-input');
+  const taskList = document.getElementById('task-list');
 
-function addTask(){
-    const taskText = document.getElementById('task-input').value.trim();
-if (taskText === "") {
-    alert("Please enter a task");
-    return; 
-}
-    
+  function addTask() {
+    const taskText = taskInput.value.trim();
     if (taskText === "") {
-        alert("Please enter a task");
-        return;
+      alert("Please enter a task");
+      return;
     }
 
     const li = document.createElement('li');
@@ -23,14 +18,13 @@ if (taskText === "") {
     removeBtn.className = "remove-btn";
 
     removeBtn.onclick = function() {
-        li.remove();
+      li.remove();
     };
 
     li.appendChild(removeBtn);
-    document.getElementById('task-list').appendChild(li);
+    taskList.appendChild(li);
+    taskInput.value = '';
+  }
 
-    document.getElementById('task-input').value = '';
-}
-
-
+  addButton.addEventListener('click', addTask);
 });
